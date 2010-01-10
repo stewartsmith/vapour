@@ -17,14 +17,46 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+#include "config.h"
+#include <assert.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <netinet/tcp.h>
 #include <stdio.h>
+#include <poll.h>
+
+#include <unistd.h>
+
+static void help(char *argv0)
+{
+  fprintf(stderr, "Usage: %s [-h?] [-V]\n", argv0);
+  fprintf(stderr, "\n");
+  fprintf(stderr, "-h -?\tHelp\n");
+  fprintf(stderr, "-V\tVersion\n");
+  fprintf(stderr, "\n");
+}
 
 int main (int argc, char* argv[])
 {
-	(void)argc;
-	(void)argv;
+  int opt;
 
-	printf("Cloud Vapour\n");
+  while ((opt= getopt(argc, argv, "h?V")) != EOF)
+  {
+    switch (opt)
+    {
+    case 'V':
+      printf("%s Version 0.1\n", argv[0]);
+      return 0;
+    case 'h':
+    case '?':
+    default:
+      help(argv[0]);
+      return 1;
+    }
+  }
 
-	return 0;
+  printf("Cloud Vapour\n");
+
+  return 0;
 }

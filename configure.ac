@@ -11,7 +11,7 @@
 AC_INIT([vapour],[0.1],[http://notyet])
 AC_CONFIG_SRCDIR([src/vapour.c])
 AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER([config.h])
+AM_CONFIG_HEADER([src/config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_PREFIX_DEFAULT([/usr])
 
