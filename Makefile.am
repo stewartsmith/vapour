@@ -46,3 +46,7 @@ aclocal_DATA= \
 
 
 EXTRA_DIST= ${aclocal_DATA}
+
+bin_PROGRAMS = vapour
+
+vapour_SOURCES = src/vapour.c
