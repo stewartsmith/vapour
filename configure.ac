@@ -17,6 +17,8 @@ AC_PREFIX_DEFAULT([/usr])
 
 AM_INIT_AUTOMAKE(-Wall -Werror foreign subdir-objects)
 
+PANDORA_REQUIRE_LIBMEMCACHED
+
 AC_CONFIG_FILES(Makefile)
 
 AC_OUTPUT
