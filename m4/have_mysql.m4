@@ -36,9 +36,9 @@ AC_DEFUN([WITH_MYSQL], [
 
     # add NDB API specific C flags
     IBASE=`$MYSQL_CONFIG --include`
-    ADDFLAGS="$ADDFLAGS $IBASE/ndb"
-    ADDFLAGS="$ADDFLAGS $IBASE/ndb/ndbapi"
-    ADDFLAGS="$ADDFLAGS $IBASE/ndb/mgmapi"
+    ADDFLAGS="$ADDFLAGS $IBASE/storage/ndb"
+    ADDFLAGS="$ADDFLAGS $IBASE/storage/ndb/ndbapi"
+    ADDFLAGS="$ADDFLAGS $IBASE/storage/ndb/mgmapi"
 
     CFLAGS="$CFLAGS $ADDFLAGS"    
     CXXFLAGS="$CXXFLAGS $ADDFLAGS"    
