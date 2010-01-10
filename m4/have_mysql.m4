@@ -32,10 +32,10 @@ AC_DEFUN([WITH_MYSQL], [
     #AC_PROG_CXX
  
     # add regular MySQL C flags
-    ADDFLAGS=`$MYSQL_CONFIG --cflags` 
+    ADDFLAGS=`$MYSQL_CONFIG --cflags |sed -e 's/-I/-isystem /'` 
 
     # add NDB API specific C flags
-    IBASE=`$MYSQL_CONFIG --include`
+    IBASE=`$MYSQL_CONFIG --include |sed -e 's/-I/-isystem /'`
     ADDFLAGS="$ADDFLAGS $IBASE/storage/ndb"
     ADDFLAGS="$ADDFLAGS $IBASE/storage/ndb/ndbapi"
     ADDFLAGS="$ADDFLAGS $IBASE/storage/ndb/mgmapi"
