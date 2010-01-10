@@ -8,9 +8,10 @@
 #
 # Parts also under GPL, see COPYING file in this directory for full text.
 
-AC_INIT([pandora-build],[PANDORA_CANONICAL_VERSION],[http://launchpad.net/pandora-build])
-AC_CONFIG_SRCDIR([m4/pandora_canonical.m4])
+AC_INIT([vapour],[0.1],[http://notyet])
+AC_CONFIG_SRCDIR([src/vapour.c])
 AC_CONFIG_AUX_DIR(config)
+AM_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_PREFIX_DEFAULT([/usr])
 
@@ -19,3 +20,17 @@ AM_INIT_AUTOMAKE(-Wall -Werror foreign subdir-objects)
 AC_CONFIG_FILES(Makefile)
 
 AC_OUTPUT
+
+echo "---"
+echo "Configuration summary for $PACKAGE_NAME version $VERSION"
+echo ""
+echo "   * Installation prefix:       $prefix"
+echo "   * System type:               $host_vendor-$host_os"
+echo "   * Host CPU:                  $host_cpu"
+echo "   * C Compiler:                $CC_VERSION"
+echo "   * Assertions enabled:        $ac_cv_assert"
+echo "   * Debug enabled:             $with_debug"
+echo "   * Warnings as failure:       $ac_cv_warnings_as_errors"
+echo ""
+echo "---"
+
