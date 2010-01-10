@@ -35,6 +35,8 @@
 
 #include <libmemcached/protocol_handler.h>
 
+#include "ndb_storage.h"
+
 static int server_sockets[1024];
 static int num_server_sockets= 0;
 static void* socket_userdata_map[1024];
@@ -668,6 +670,8 @@ int main (int argc, char* argv[])
 
   server_socket(server_port);
 
+  init_ndb();
+
   if (num_server_sockets == 0)
   {
     fprintf(stderr, "ERROR: Could not open any server sockets.\n\n");
@@ -692,7 +696,9 @@ int main (int argc, char* argv[])
     socket_userdata_map[server_sockets[xx]]= protocol_handle;
 
   work();
+  // never reached
 
+  cleanup_ndb();
   return 0;
 }
 
