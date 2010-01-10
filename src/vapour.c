@@ -133,7 +133,7 @@ static void help(char *argv0)
 int main (int argc, char* argv[])
 {
   int opt;
-  char *server_port= "4242";
+  const char *server_port= "4242";
 
   while ((opt= getopt(argc, argv, "h?Vp:")) != EOF)
   {
