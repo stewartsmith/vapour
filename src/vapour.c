@@ -165,5 +165,13 @@ int main (int argc, char* argv[])
     return 1;
   }
 
+  struct memcached_protocol_st *protocol_handle;
+  if ((protocol_handle= memcached_protocol_create_instance()) == NULL)
+  {
+    fprintf(stderr, "Failed to allocate protocol handle\n");
+    return 1;
+  }
+
+
   return 0;
 }
