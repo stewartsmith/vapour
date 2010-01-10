@@ -30,6 +30,8 @@
 
 #include <unistd.h>
 
+#include <libmemcached/protocol_handler.h>
+
 static int server_sockets[1024];
 static int num_server_sockets= 0;
 
