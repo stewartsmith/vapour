@@ -24,6 +24,12 @@ AC_DEFUN([_PANDORA_SEARCH_LIBMEMCACHED],[
       memcached_dump_func *df;
       memcached_lib_version();
     ])
+    AC_LIB_HAVE_LINKFLAGS(memcachedprotocol,,[
+      #include <libmemcached/protocol_handler.h>
+    ],[
+      struct memcached_protocol_st *protocol_handle= NULL;
+      protocol_handle= memcached_protocol_create_instance();
+    ])
   ],[
     ac_cv_libmemcached="no"
   ])
