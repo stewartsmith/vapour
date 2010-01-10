@@ -64,5 +64,5 @@ AC_DEFUN([PANDORA_REQUIRE_LIBMEMCACHED],[
 AC_DEFUN([PANDORA_REQUIRE_LIBMEMCACHEDPROTOCOL],[
   AC_REQUIRE([PANDORA_HAVE_LIBMEMCACHED])
   AS_IF([test x$ac_cv_libmemcachedprotocol = xno],
-      AC_MSG_ERROR([libmemcached is required for ${PACKAGE}]))
+      AC_MSG_ERROR([libmemcachedprotocol is required for ${PACKAGE}]))
 ])
