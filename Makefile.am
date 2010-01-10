@@ -10,4 +10,4 @@ ACLOCAL_AMFLAGS= -I m4
 bin_PROGRAMS= vapour
 
 vapour_SOURCES= src/vapour.c
-vapour_LDADD= ${LTLIBMEMCACHED} -lmemcachedprotocol
+vapour_LDADD= ${LTLIBMEMCACHED} ${LTLIBMEMCACHEDPROTOCOL}
