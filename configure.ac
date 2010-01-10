@@ -8,7 +8,7 @@
 #
 # Parts also under GPL, see COPYING file in this directory for full text.
 
-AC_INIT([vapour],[0.1],[http://notyet])
+AC_INIT([vapour],[0.1],[http://launchpad.net/vapour])
 AC_CONFIG_SRCDIR([src/vapour.c])
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER([src/config.h])
