@@ -1,5 +1,5 @@
-# pandora-build 
-# Copyright (C) 2009 Monty Taylor
+# vapour
+# Copyright (C) 2009, 2010 Monty Taylor
 # Copyright (C) 2010 Stewart Smith
 # All rights reserved.
 #
@@ -15,7 +15,7 @@ AM_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_PREFIX_DEFAULT([/usr])
 
-AM_INIT_AUTOMAKE(-Wall -Werror foreign subdir-objects)
+PANDORA_CANONICAL_TARGET(ignore-shared-ptr)
 
 PANDORA_REQUIRE_LIBMEMCACHED
 
