@@ -334,23 +334,28 @@ static protocol_binary_response_status get_handler(const void *cookie,
                                                    const void *key,
                                                    uint16_t keylen,
                                                    memcached_binary_protocol_get_response_handler response_handler) {
-  struct item *item= NULL; //get_item(key, keylen);
-  (void)cookie;
-  (void)key;
-  (void)keylen;
-  (void)response_handler;
+  struct item *item= get_item(key, keylen);
 
   if (item == NULL)
   {
     return PROTOCOL_BINARY_RESPONSE_KEY_ENOENT;
   }
   protocol_binary_response_status rc= PROTOCOL_BINARY_RESPONSE_SUCCESS;
-/*
   rc= response_handler(cookie, key, (uint16_t)keylen,
                           item->data, (uint32_t)item->size, item->flags,
                           item->cas);
+  ((char*)item->data)[(uint32_t)item->size]= 0;
+
+  printf("key: %d ", keylen);
+  for(int i=0; i< keylen;i++)
+    printf("%c", ((char*)key)[i]);
+
+  printf("key: %d ", (int)item->nkey);
+  for(int i=0; i< keylen;i++)
+    printf("%c", ((char*)item->key)[i]);
+
+  printf("\nitem: %d %s\n", (int)item->size, (char*)item->data);
   release_item(item);
-*/
   return rc;
 }
 
@@ -670,7 +675,9 @@ int main (int argc, char* argv[])
 
   server_socket(server_port);
 
+  printf("\nConnecting to NDB...");
   init_ndb();
+  printf("Done\n");
 
   if (num_server_sockets == 0)
   {
