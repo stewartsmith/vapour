@@ -85,11 +85,11 @@ AC_DEFUN([PANDORA_VC_VERSION],[
 dnl  echo "Grabbing changelog and version information from bzr"
 dnl  bzr log --short > ChangeLog || touch ChangeLog
     PANDORA_BZR_REVNO=`bzr revno`
-    AS_IF([test "x$PANDORA_BZR_REVNO" != "${PANDORA_VC_REVNO}"],[
+    AS_IF([test "x$PANDORA_BZR_REVNO" != "x${PANDORA_VC_REVNO}"],[
       PANDORA_VC_REVNO="${PANDORA_BZR_REVNO}"
       PANDORA_VC_REVID=`bzr log -r-1 --show-ids | grep revision-id | awk '{print $[]2}' | head -1`
       PANDORA_VC_BRANCH=`bzr nick`
-      AS_IF([test "x${PANDORA_VC_BRANCH}" != "${PACKAGE}"],[
+      AS_IF([test "x${PANDORA_VC_BRANCH}" != x"${PACKAGE}"],[
         PANDORA_RELEASE_COMMENT="${PANDORA_VC_BRANCH}"
       ],[
         PANDORA_RELEASE_COMMENT="trunk"
@@ -120,4 +120,15 @@ EOF
   AC_SUBST(PANDORA_RELEASE_COMMENT)
   AC_SUBST(PANDORA_RELEASE_VERSION)
   AC_SUBST(PANDORA_RELEASE_ID)
+
+  m4_define([PANDORA_VC_PREFIX],m4_toupper(m4_normalize(AC_PACKAGE_NAME))[_])
+
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[VC_REVNO], [$PANDORA_VC_REVNO], [Version control revision number])
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[VC_REVID], ["$PANDORA_VC_REVID"], [Version control revision ID])
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[VC_BRANCH], ["$PANDORA_VC_BRANCH"], [Version control branch name])
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[RELEASE_DATE], ["$PANDORA_RELEASE_DATE"], [Release date of version control checkout])
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[RELEASE_NODOTS_DATE], [$PANDORA_RELEASE_NODOTS_DATE], [Numeric formatted release date of checkout])
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[RELEASE_COMMENT], ["$PANDORA_RELEASE_COMMENT"], [Set to trunk if the branch is the main $PACKAGE branch])
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[RELEASE_VERSION], ["$PANDORA_RELEASE_VERSION"], [Release date and revision number of checkout])
+  AC_DEFINE_UNQUOTED(PANDORA_VC_PREFIX[RELEASE_ID], [$PANDORA_RELEASE_ID], [Numeric formatted release date and revision number of checkout])
 ])
