@@ -11,6 +11,9 @@
 AC_INIT([vapour],[0.1],[http://launchpad.net/vapour])
 AC_CONFIG_SRCDIR([src/vapour.c])
 AC_CONFIG_AUX_DIR(config)
+AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_HEADERS([config.h])
+AC_PREFIX_DEFAULT([/usr])
 
 PANDORA_CANONICAL_TARGET
 
