@@ -34,7 +34,7 @@ AC_DEFUN([_PANDORA_SEARCH_LIBNDBCLIENT],[
     ],[
       ndb_include_prefix="-I"
     ])
-    CPPFLAGS="${CPPFLAGS} ${ndb_include_prefix}${ac_with_libndbclient}/include ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql/storage/ndb ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql/storage/ndb/ndbapi ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql/storage/ndb/mgmapi"
+    CPPFLAGS="${CPPFLAGS} ${ndb_include_prefix}${ac_with_libndbclient}/include ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql/storage/ndb ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql/storage/ndb/ndbapi ${ndb_include_prefix}${ac_with_libndbclient}/include/mysql/storage/ndb/mgmapi ${ndb_include_prefix}${ac_with_libndbclient}/include/storage/ndb ${ndb_include_prefix}${ac_with_libndbclient}/include/storage/ndb/ndbapi ${ndb_include_prefix}${ac_with_libndbclient}/include/storage/ndb/mgmapi"
   ])
   LIBS="${LIBS} -lndbclient -lmysqlclient_r"
 
