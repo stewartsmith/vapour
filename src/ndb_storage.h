@@ -50,5 +50,24 @@ extern "C"
 #endif
 void release_item(struct item* item);
 
+#ifdef __cplusplus
+extern "C"
+#endif
+bool delete_item(const void* key, size_t nkey);
 
+#ifdef __cplusplus
+extern "C"
+#endif
+void flush(uint32_t when);
+
+#ifdef __cplusplus
+extern "C"
+#endif
+struct item* create_item(const void* key, size_t nkey, const void* data,
+                         size_t size, uint32_t flags, time_t exp);
+
+#ifdef __cplusplus
+extern "C"
+#endif
+void put_item(struct item* item);
 #endif
